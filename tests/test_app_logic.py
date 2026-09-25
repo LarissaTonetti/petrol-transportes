@@ -1,10 +1,15 @@
 import importlib
+import os
 import sys
 import types
 import unittest
 
 
 def load_app_module():
+    local_path = os.path.join(os.path.dirname(__file__), "..", "local_programacoes.json")
+    local_path = os.path.abspath(local_path)
+    if os.path.exists(local_path):
+        os.remove(local_path)
     class DummySessionState(dict):
         pass
 
